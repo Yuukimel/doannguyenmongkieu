@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.148.2">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>MFA for AWS Accounts :: Create a new AWS account.</title>
+    <title>Set up IAM Role, AWS Glue :: Create a new AWS account.</title>
 
     
-    <link href="/css/nucleus.css?1704686315" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1704686315" rel="stylesheet">
-    <link href="/css/hybrid.css?1704686315" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1704686315" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1704686315" rel="stylesheet">
-    <link href="/css/auto-complete.css?1704686315" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1704686315" rel="stylesheet">
-    <link href="/css/theme.css?1704686315" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1704686315" rel="stylesheet">
+    <link href="/css/nucleus.css?1754979394" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1754979394" rel="stylesheet">
+    <link href="/css/hybrid.css?1754979394" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1754979394" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1754979394" rel="stylesheet">
+    <link href="/css/auto-complete.css?1754979394" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1754979394" rel="stylesheet">
+    <link href="/css/theme.css?1754979394" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1754979394" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1704686315" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1754979394" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1704686315"></script>
+    <script src="/js/jquery-3.3.1.min.js?1754979394"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,16 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1704686315"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1704686315"></script>
+
+
+    
+
+<script type="text/javascript" src="/js/lunr.min.js?1754979394"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1754979394"></script>
 <script type="text/javascript">
-    
-        var baseurl = "";
-    
+    var baseurl = "\/\/localhost:1313\/";
 </script>
-<script type="text/javascript" src="/js/search.js?1704686315"></script>
+<script type="text/javascript" src="/js/search.js?1754979394"></script>
 
     
   </div>
@@ -82,13 +84,13 @@
  
   
     
-    <li data-nav-id="/1-create-new-aws-account/" title="Create new AWS account" class="dd-item 
+    <li data-nav-id="/1-s3bucket/" title="Set up S3 Bucket" class="dd-item 
         
         
         
         ">
-      <a href="/1-create-new-aws-account/">
-           <b> 1. </b> Create new AWS account
+      <a href="/1-s3bucket/">
+           <b> 1.</b> Set up S3 Bucket
           
             <i class="fas fa-check read-icon"></i>
           
@@ -113,13 +115,13 @@
  
   
     
-    <li data-nav-id="/1-create-new-aws-account/1.1-find-account-id/" title="View AWS account identifiers" class="dd-item 
+    <li data-nav-id="/1-s3bucket/1.1-setup-s3-bucket/" title="S3 Bucket in Data Quality Management Workshop" class="dd-item 
         
         
         
         ">
-      <a href="/1-create-new-aws-account/1.1-find-account-id/">
-           <b> 1.1 </b> View AWS account identifiers
+      <a href="/1-s3bucket/1.1-setup-s3-bucket/">
+           <b> 1.1 </b> S3 Bucket in Data Quality Management Workshop
           
             <i class="fas fa-check read-icon"></i>
           
@@ -141,69 +143,13 @@
  
   
     
-    <li data-nav-id="/1-create-new-aws-account/1.2-update-account/" title="Update the AWS account" class="dd-item 
+    <li data-nav-id="/1-s3bucket/1.2-setup-data/" title="Sample Data Description" class="dd-item 
         
         
         
         ">
-      <a href="/1-create-new-aws-account/1.2-update-account/">
-           <b> 1.2 </b> Update the AWS account
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/1-create-new-aws-account/1.3-aws-account-alias/" title="Create or update your AWS account alias" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/1-create-new-aws-account/1.3-aws-account-alias/">
-           <b> 1.3 </b> Create or update your AWS account alias
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/1-create-new-aws-account/1.4-close-account/" title="Close a standalone AWS account" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/1-create-new-aws-account/1.4-close-account/">
-           <b> 1.4 </b> Close a standalone AWS account
+      <a href="/1-s3bucket/1.2-setup-data/">
+           <b> 1.2 </b> Sample Data Description
           
             <i class="fas fa-check read-icon"></i>
           
@@ -232,13 +178,13 @@
  
   
     
-    <li data-nav-id="/2-mfa-setup-for-aws-user-root/" title="MFA for AWS Accounts" class="dd-item 
-        parent
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/" title="Set up IAM Role, AWS Glue" class="dd-item 
+        
         active
         
         ">
       <a href="/2-mfa-setup-for-aws-user-root/">
-           <b> 2. </b> MFA for AWS Accounts
+           <b> 2. </b> Set up IAM Role, AWS Glue
           
             <i class="fas fa-check read-icon"></i>
           
@@ -263,13 +209,13 @@
  
   
     
-    <li data-nav-id="/2-mfa-setup-for-aws-user-root/1-virtual-mfa-device/" title="Virtual MFA Device" class="dd-item 
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/1-iam-role-for-aws-glue/" title="Set up IAM Role for AWS Glue" class="dd-item 
         
         
         
         ">
-      <a href="/2-mfa-setup-for-aws-user-root/1-virtual-mfa-device/">
-           <b> 2.1 </b> Virtual MFA Device
+      <a href="/2-mfa-setup-for-aws-user-root/1-iam-role-for-aws-glue/">
+           <b> 2.1 </b> Set up IAM Role for AWS Glue
           
             <i class="fas fa-check read-icon"></i>
           
@@ -291,13 +237,13 @@
  
   
     
-    <li data-nav-id="/2-mfa-setup-for-aws-user-root/2-u2f-security-key/" title="U2F Security Key" class="dd-item 
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/2-setup-awsglue-crawlers/" title="Set up AWS Glue Crawlers" class="dd-item 
         
         
         
         ">
-      <a href="/2-mfa-setup-for-aws-user-root/2-u2f-security-key/">
-           <b> 2.2 </b> U2F Security Key
+      <a href="/2-mfa-setup-for-aws-user-root/2-setup-awsglue-crawlers/">
+           <b> 2.2 </b> Set up AWS Glue Crawlers
           
             <i class="fas fa-check read-icon"></i>
           
@@ -319,13 +265,13 @@
  
   
     
-    <li data-nav-id="/2-mfa-setup-for-aws-user-root/3-other-hardware-mfa-device/" title="Hard MFA Device" class="dd-item 
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/3-create-database/" title="Create a New Database" class="dd-item 
         
         
         
         ">
-      <a href="/2-mfa-setup-for-aws-user-root/3-other-hardware-mfa-device/">
-           <b> 2.3 </b> Hard MFA Device
+      <a href="/2-mfa-setup-for-aws-user-root/3-create-database/">
+           <b> 2.3 </b> Create a New Database
           
             <i class="fas fa-check read-icon"></i>
           
@@ -354,13 +300,13 @@
  
   
     
-    <li data-nav-id="/3-create-admin-user-and-group/" title="Create Admin Group and Admin User" class="dd-item 
+    <li data-nav-id="/3-running-data-profiling/" title="Running Data Profiling on a Table" class="dd-item 
         
         
         
         ">
-      <a href="/3-create-admin-user-and-group/">
-           <b> 3. </b> Create Admin Group and Admin User
+      <a href="/3-running-data-profiling/">
+           <b> 3. </b> Running Data Profiling on a Table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -380,13 +326,13 @@
  
   
     
-    <li data-nav-id="/4-verify-new-account/" title="Account Authentication Support" class="dd-item 
+    <li data-nav-id="/4-deleting-resources/" title="Deleting Resources" class="dd-item 
         
         
         
         ">
-      <a href="/4-verify-new-account/">
-           <b> 4. </b> Account Authentication Support
+      <a href="/4-deleting-resources/">
+           <b> 4. </b> Deleting Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -437,7 +383,7 @@
                   
                     
                     
-                      <option id="en" value="/2-mfa-setup-for-aws-user-root/" selected>English</option>
+                      <option id="en" value="//localhost:1313/2-mfa-setup-for-aws-user-root/" selected>English</option>
                     
                   
               
@@ -451,7 +397,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/2-mfa-setup-for-aws-user-root/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/2-mfa-setup-for-aws-user-root/">Tiếng Việt</option>
                     
                   
               
@@ -537,7 +483,7 @@
             
           
           
-            <a href='/'>Setting up an AWS account</a> > MFA for AWS Accounts
+            <a href='/'>Data Quality Management with Automated Validation on AWS</a> > Set up IAM Role, AWS Glue
           
         
           
@@ -550,15 +496,16 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#introduction-to-iam-root-user">Introduction to IAM Root User</a></li>
+    <li><a href="#key-characteristics">Key Characteristics:</a></li>
+    <li><a href="#security-recommendations">Security Recommendations:</a></li>
+    <li><a href="#introduction-to-aws-glue">Introduction to AWS Glue</a>
       <ul>
-        <li></li>
+        <li><a href="#key-features">Key Features</a></li>
+        <li><a href="#aws-glue-architecture-overview">AWS Glue Architecture Overview</a></li>
+        <li><a href="#common-use-cases">Common Use Cases</a></li>
       </ul>
     </li>
-    <li><a href="#content">Content</a></li>
-    <li><a href="#1-setup-with-virtual-mfa-device">1. Setup with Virtual MFA Device</a></li>
-    <li><a href="#2-setup-with-u2f-security-key">2. Setup with U2F Security Key</a></li>
-    <li><a href="#3-setup-with-other-hardware-mfa-device">3. Setup with Other Hardware MFA Device</a></li>
   </ul>
 </nav>
     </div>
@@ -576,7 +523,7 @@
           
             <h1>
               
-              MFA for AWS Accounts
+              Set up IAM Role, AWS Glue
             </h1>
           
 
@@ -584,57 +531,64 @@
 
 
 
-	<h4 id="multi-factor-authentication-mfa-setup">Multi-Factor Authentication (MFA) Setup</h4>
-<p>During the authentication process, you will need to utilize three different MFA devices to ensure the security of your account.</p>
-<ol>
-<li>
-<p><strong>Virtual MFA Devices (Smartphone Apps)</strong>: Install the following apps on your smartphone and set them up for MFA:</p>
+	<h2 id="introduction-to-iam-root-user">Introduction to IAM Root User</h2>
+<p>The <strong>IAM Root User</strong> is the <strong>highest-level administrative account</strong> in AWS, automatically created when you first sign up for an AWS account.<br>
+This account has <strong>unrestricted access</strong> to all AWS services and resources.</p>
+<h2 id="key-characteristics">Key Characteristics:</h2>
 <ul>
-<li>Microsoft Authenticator</li>
-<li>Google Authenticator</li>
-<li>Okta Verify</li>
+<li><strong>Full access</strong> to all services, including the ability to modify billing settings and delete the account.</li>
+<li>Cannot be deleted or have its permissions restricted.</li>
+<li>Only <strong>one Root User</strong> exists for each AWS account.</li>
+</ul>
+<h2 id="security-recommendations">Security Recommendations:</h2>
+<ol>
+<li><strong>Enable Multi-Factor Authentication (MFA)</strong> for the Root User.</li>
+<li><strong>Avoid using the Root User for daily operations</strong> — instead, create IAM users/roles with the necessary permissions.</li>
+<li><strong>Store Root User credentials</strong> in a secure location and only use them when absolutely necessary (e.g., changing billing settings, account recovery).</li>
+<li><strong>Enable CloudTrail logging</strong> to monitor any activity related to the Root User.</li>
+</ol>
+<p>📌 <strong>Note:</strong> If the Root User credentials are compromised, you could <strong>lose complete control over your AWS account</strong>.</p>
+<h2 id="introduction-to-aws-glue">Introduction to AWS Glue</h2>
+<p><strong>AWS Glue</strong> is a fully managed <strong>extract, transform, and load (ETL)</strong> service provided by Amazon Web Services.<br>
+It helps you prepare and load data for analytics, machine learning, and application development without having to manually manage servers or infrastructure.</p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li><strong>Serverless</strong>: No infrastructure to manage. AWS Glue automatically provisions the environment.</li>
+<li><strong>Data Catalog</strong>: Centralized metadata repository to store table definitions, schema, and job metadata.</li>
+<li><strong>Built-in ETL Engine</strong>: Automatically generates Python or Scala code for ETL jobs.</li>
+<li><strong>Job Scheduling</strong>: Schedule ETL jobs or trigger them based on events.</li>
+<li><strong>Integration with AWS Services</strong>: Works seamlessly with Amazon S3, Redshift, RDS, Athena, and more.</li>
+</ul>
+<h3 id="aws-glue-architecture-overview">AWS Glue Architecture Overview</h3>
+<ol>
+<li><strong>Data Catalog</strong>
+<ul>
+<li>Stores metadata about your datasets.</li>
 </ul>
 </li>
-<li>
-<p><strong>Hard U2F Security Key</strong>: Obtain a hard U2F security key to enhance your account&rsquo;s security.</p>
+<li><strong>Crawlers</strong>
+<ul>
+<li>Automatically scan data sources and update the Data Catalog.</li>
+</ul>
 </li>
-<li>
-<p><strong>Other Hardware MFA Devices (e.g., Gemalto Security Keys)</strong>: Consider using additional hardware MFA devices for added protection.</p>
+<li><strong>ETL Jobs</strong>
+<ul>
+<li>Transform and move data using Apache Spark under the hood.</li>
+</ul>
+</li>
+<li><strong>Triggers &amp; Workflow</strong>
+<ul>
+<li>Automate job execution and dependencies.</li>
+</ul>
 </li>
 </ol>
-<h2 id="content">Content</h2>
+<h3 id="common-use-cases">Common Use Cases</h3>
 <ul>
-<li><a href="#content">Content</a></li>
-<li><a href="#1-setup-with-virtual-mfa-device">1. Setup with Virtual MFA Device</a></li>
-<li><a href="#2-setup-with-u2f-security-key">2. Setup with U2F Security Key</a></li>
-<li><a href="#3-setup-with-other-hardware-mfa-device">3. Setup with Other Hardware MFA Device</a></li>
+<li>Data preparation for analytics and machine learning.</li>
+<li>Data integration from multiple sources.</li>
+<li>Metadata management across different AWS data services.</li>
+<li>Automated validation and transformation in <strong>Data Quality Management</strong> workflows.</li>
 </ul>
-<hr>
-<h2 id="1-setup-with-virtual-mfa-device">1. Setup with Virtual MFA Device</h2>
-<p>To set up your virtual MFA device using apps on your smartphone, follow these steps:</p>
-<ul>
-<li>Step 1: Install the Microsoft Authenticator, Google Authenticator, and Okta Verify apps on your smartphone.</li>
-<li>Step 2: Open the app and follow the on-screen instructions to add your account.</li>
-<li>Step 3: Use the app-generated codes during the MFA authentication process.</li>
-</ul>
-<hr>
-<h2 id="2-setup-with-u2f-security-key">2. Setup with U2F Security Key</h2>
-<p>Setting up your U2F security key involves the following steps:</p>
-<ul>
-<li>Step 1: Obtain a compatible U2F security key.</li>
-<li>Step 2: Connect the key to your device&rsquo;s USB port.</li>
-<li>Step 3: During authentication, insert the key and follow the prompts to complete the process.</li>
-</ul>
-<hr>
-<h2 id="3-setup-with-other-hardware-mfa-device">3. Setup with Other Hardware MFA Device</h2>
-<p>Consider using hardware MFA devices like Gemalto security keys for an extra layer of security:</p>
-<ul>
-<li>Step 1: Acquire a Gemalto security key or a similar hardware device.</li>
-<li>Step 2: Connect and set up the device as per the manufacturer&rsquo;s instructions.</li>
-<li>Step 3: Integrate the device into your MFA authentication workflow.</li>
-</ul>
-<hr>
-<p>Remember to keep your MFA devices secure and follow best practices to ensure the safety of your account.</p>
 
 
 
@@ -720,38 +674,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -866,10 +788,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/1-create-new-aws-account/1.4-close-account/" title="Close a standalone AWS account"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/1-s3bucket/1.2-setup-data/" title="Sample Data Description"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/2-mfa-setup-for-aws-user-root/1-virtual-mfa-device/" title="Virtual MFA Device" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/2-mfa-setup-for-aws-user-root/1-iam-role-for-aws-glue/" title="Set up IAM Role for AWS Glue" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -879,19 +801,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1704686315"></script>
-    <script src="/js/perfect-scrollbar.min.js?1704686315"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1704686315"></script>
-    <script src="/js/jquery.sticky.js?1704686315"></script>
-    <script src="/js/featherlight.min.js?1704686315"></script>
-    <script src="/js/highlight.pack.js?1704686315"></script>
+    <script src="/js/clipboard.min.js?1754979394"></script>
+    <script src="/js/perfect-scrollbar.min.js?1754979394"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1754979394"></script>
+    <script src="/js/jquery.sticky.js?1754979394"></script>
+    <script src="/js/featherlight.min.js?1754979394"></script>
+    <script src="/js/highlight.pack.js?1754979394"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1704686315"></script>
-    <script src="/js/learn.js?1704686315"></script>
-    <script src="/js/hugo-learn.js?1704686315"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1754979394"></script>
+    <script src="/js/learn.js?1754979394"></script>
+    <script src="/js/hugo-learn.js?1754979394"></script>
 
-    <link href="/mermaid/mermaid.css?1704686315" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1704686315"></script>
+    <link href="/mermaid/mermaid.css?1754979394" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1754979394"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

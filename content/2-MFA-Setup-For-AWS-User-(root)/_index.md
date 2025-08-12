@@ -1,61 +1,55 @@
 ---
-title : "MFA for AWS Accounts"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 2. </b> "
+title: "Set up IAM Role, AWS Glue"
+date: 2024-01-01T10:00:00+07:00
+weight: 2
+chapter: false
+pre: " <b> 2. </b> "
 ---
 
-#### Multi-Factor Authentication (MFA) Setup
+## Introduction to IAM Root User
 
-During the authentication process, you will need to utilize three different MFA devices to ensure the security of your account.
+The **IAM Root User** is the **highest-level administrative account** in AWS, automatically created when you first sign up for an AWS account.  
+This account has **unrestricted access** to all AWS services and resources.
 
-1. **Virtual MFA Devices (Smartphone Apps)**: Install the following apps on your smartphone and set them up for MFA:
-   - Microsoft Authenticator
-   - Google Authenticator
-   - Okta Verify
+## Key Characteristics:
+- **Full access** to all services, including the ability to modify billing settings and delete the account.
+- Cannot be deleted or have its permissions restricted.
+- Only **one Root User** exists for each AWS account.
 
-2. **Hard U2F Security Key**: Obtain a hard U2F security key to enhance your account's security.
+## Security Recommendations:
+1. **Enable Multi-Factor Authentication (MFA)** for the Root User.
+2. **Avoid using the Root User for daily operations** — instead, create IAM users/roles with the necessary permissions.
+3. **Store Root User credentials** in a secure location and only use them when absolutely necessary (e.g., changing billing settings, account recovery).
+4. **Enable CloudTrail logging** to monitor any activity related to the Root User.
 
-3. **Other Hardware MFA Devices (e.g., Gemalto Security Keys)**: Consider using additional hardware MFA devices for added protection.
+📌 **Note:** If the Root User credentials are compromised, you could **lose complete control over your AWS account**.
 
-## Content
+## Introduction to AWS Glue
 
-- [Content](#content)
-- [1. Setup with Virtual MFA Device](#1-setup-with-virtual-mfa-device)
-- [2. Setup with U2F Security Key](#2-setup-with-u2f-security-key)
-- [3. Setup with Other Hardware MFA Device](#3-setup-with-other-hardware-mfa-device)
+**AWS Glue** is a fully managed **extract, transform, and load (ETL)** service provided by Amazon Web Services.  
+It helps you prepare and load data for analytics, machine learning, and application development without having to manually manage servers or infrastructure.
 
----
+### Key Features
+- **Serverless**: No infrastructure to manage. AWS Glue automatically provisions the environment.
+- **Data Catalog**: Centralized metadata repository to store table definitions, schema, and job metadata.
+- **Built-in ETL Engine**: Automatically generates Python or Scala code for ETL jobs.
+- **Job Scheduling**: Schedule ETL jobs or trigger them based on events.
+- **Integration with AWS Services**: Works seamlessly with Amazon S3, Redshift, RDS, Athena, and more.
 
-## 1. Setup with Virtual MFA Device
+### AWS Glue Architecture Overview
+1. **Data Catalog**  
+   - Stores metadata about your datasets.  
+2. **Crawlers**  
+   - Automatically scan data sources and update the Data Catalog.  
+3. **ETL Jobs**  
+   - Transform and move data using Apache Spark under the hood.  
+4. **Triggers & Workflow**  
+   - Automate job execution and dependencies.
 
-To set up your virtual MFA device using apps on your smartphone, follow these steps:
 
-- Step 1: Install the Microsoft Authenticator, Google Authenticator, and Okta Verify apps on your smartphone.
-- Step 2: Open the app and follow the on-screen instructions to add your account.
-- Step 3: Use the app-generated codes during the MFA authentication process.
+### Common Use Cases
+- Data preparation for analytics and machine learning.
+- Data integration from multiple sources.
+- Metadata management across different AWS data services.
+- Automated validation and transformation in **Data Quality Management** workflows.
 
----
-
-## 2. Setup with U2F Security Key
-
-Setting up your U2F security key involves the following steps:
-
-- Step 1: Obtain a compatible U2F security key.
-- Step 2: Connect the key to your device's USB port.
-- Step 3: During authentication, insert the key and follow the prompts to complete the process.
-
----
-
-## 3. Setup with Other Hardware MFA Device
-
-Consider using hardware MFA devices like Gemalto security keys for an extra layer of security:
-
-- Step 1: Acquire a Gemalto security key or a similar hardware device.
-- Step 2: Connect and set up the device as per the manufacturer's instructions.
-- Step 3: Integrate the device into your MFA authentication workflow.
-
----
-
-Remember to keep your MFA devices secure and follow best practices to ensure the safety of your account.

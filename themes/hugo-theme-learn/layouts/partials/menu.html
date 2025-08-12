@@ -39,11 +39,11 @@
       </section>
     {{end}}
 
-    {{ if or .Site.IsMultiLingual $showvisitedlinks }}
+    {{ if or hugo.IsMultilingual $showvisitedlinks }}
     <section id="prefooter">
       <hr/>
       <ul>
-      {{ if and .Site.IsMultiLingual (not .Site.Params.DisableLanguageSwitchingButton)}}
+      {{ if and hugo.IsMultilingual (not .Site.Params.DisableLanguageSwitchingButton)}}
         <li>
           <a class="padding">
             <i class="fas fa-language fa-fw"></i>
@@ -95,13 +95,13 @@
 {{ $showvisitedlinks := .showvisitedlinks }}
 {{ $currentNode := .currentnode }}
 {{ $currentFileUniqueID := "" }}
-{{ with $currentNode.File }}{{ $currentFileUniqueID = .UniqueID }}{{ end }}
+{{ with $currentNode.File }}{{ $currentFileUniqueID = .Path }}{{ end }}
  {{with .sect}}
   {{if and .IsSection (or (not .Params.hidden) $.showhidden)}}
     {{safeHTML .Params.head}}
     <li data-nav-id="{{.RelPermalink}}" title="{{.Title}}" class="dd-item 
         {{if .IsAncestor $currentNode }}parent{{end}}
-        {{if eq .File.UniqueID $currentFileUniqueID}}active{{end}}
+        {{if eq .File.Path $currentFileUniqueID}}active{{end}}
         {{if .Params.alwaysopen}}parent{{end}}
         ">
       <a href="{{.RelPermalink}}">
@@ -139,7 +139,7 @@
     </li>
   {{else}}
     {{ if not .Params.Hidden }}
-      <li data-nav-id="{{.RelPermalink}}" title="{{.Title}}" class="dd-item {{if eq .File.UniqueID $currentFileUniqueID}}active{{end}}">
+      <li data-nav-id="{{.RelPermalink}}" title="{{.Title}}" class="dd-item {{if eq .File.Path $currentFileUniqueID}}active{{end}}">
         <a href="{{ .RelPermalink}}">
         {{safeHTML .Params.Pre}}{{or .Params.menuTitle .LinkTitle .Title}}{{safeHTML .Params.Post}}
         {{ if $showvisitedlinks}}<i class="fas fa-check read-icon"></i>{{end}}

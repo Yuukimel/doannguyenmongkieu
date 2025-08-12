@@ -1,42 +1,47 @@
 ---
-title : "Thiết lập Tài Khoản AWS"
-date :  "`r Sys.Date()`" 
+title : "Data Quality Management với Automated Validation trên AWS"
+date : 2024-01-01T10:00:00+07:00
 weight : 1 
 chapter : false
 ---
 
-# Tạo tài khoản AWS đầu tiên
+# Data Quality Management với Automated Validation trên AWS
+## Tổng quan
 
-#### Tổng quan
-Trong bài lab đầu tiên này, bạn sẽ tạo mới **tài khoản AWS** đầu tiên của mình, tạo **MFA** (Multi-factor Authentication) để gia tăng bảo mật tài khoản của bạn. Bước tiếp theo bạn sẽ tạo **Admin Group**, **Admin User** để quản lý quyền truy cập vào các tài nguyên trong tài khoản của mình thay vì sử dụng user root.\
-Cuối cùng, nếu quá trình xác thực tài khoản của bạn có vấn đề, bạn sẽ được hướng dẫn hỗ trợ xác thực tài khoản với **AWS Support**.
+Trong môi trường dữ liệu lớn và đa nguồn, **đảm bảo chất lượng dữ liệu** là yếu tố then chốt cho các quyết định kinh doanh chính xác.  
+Tuy nhiên, các lỗi như:
+- Thiếu dữ liệu
+- Sai định dạng
+- Trùng lặp bản ghi
 
-#### Tài khoản AWS (AWS Account)
-**Tài khoản AWS** là phương tiện để bạn có thể truy cập và sử dụng những tài nguyên và dịch vụ của AWS. Theo mặc định, mỗi tài khoản AWS sẽ có một *root user*. *Root user* có toàn quyền với tài khoản AWS của bạn, và quyền hạn của root user không thể bị giới hạn. Nếu bạn mới sử dụng tài khoản AWS lần đầu tiên, bạn sẽ truy cập vào tài khoản dưới danh nghĩa của *root user*.
+… vẫn thường xuyên xảy ra và gây ảnh hưởng nghiêm trọng đến kết quả phân tích.
 
-![Create Account](/images/1/0001.png?featherlight=false&width=90pc)
+Giải pháp **Data Quality Management với Automated Validation** giúp:
+- **Tự động kiểm tra** chất lượng dữ liệu
+- **Phát hiện và xử lý** dữ liệu lỗi
+- **Giảm thiểu công sức kiểm tra thủ công**
+- **Giám sát thời gian thực** bằng các dịch vụ AWS
 
-{{% notice note %}}
-Chính vì quyền hạn của **root user** không thể bị giới hạn, AWS khuyên bạn không nên sử dụng trực tiếp *root user* cho bất kỳ công tác nào. Thay vào đó, bạn nên tạo ra một *IAM User* và trao quyền quản trị cho *IAM User* đó để dễ dàng quản lý và giảm thiểu rủi ro.
-{{% /notice %}}
+---
 
-#### MFA (Multi-factor Authentication)
-**MFA** là một tính năng được sử dụng để gia tăng bảo mật của tài khoản AWS. Nếu MFA được kích hoạt, bạn sẽ phải nhập mã OTP (One-time Password) mỗi lần bạn đăng nhập vào tài khoản AWS.
+### 📦 Dịch vụ AWS sử dụng
 
-#### IAM Group 
-**IAM Group**  là một công cụ quản lý người dùng (*IAM User*) của AWS. Một IAM Group có thể chứa nhiều IAM User. Các IAM User ở trong một IAM Group đều hưởng chung quyền hạn mà IAM Group đó được gán cho.
+- **AWS Glue**  
+  Dịch vụ ETL (Extract, Transform, Load) serverless, dùng để quét, phân loại dữ liệu, và định nghĩa **Data Quality Rules** thông qua Data Quality Definition Language (DQDL).
 
-#### IAM User
-**IAM User** là một đơn vị người dùng của AWS. Khi bạn đăng nhập vào AWS, bạn sẽ phải đăng nhập dưới danh nghĩa của một IAM User. Nếu bạn mới đăng nhập vào AWS lần đầu tiên, bạn sẽ đăng nhập dưới danh nghĩa của *root user* (tạm dịch là người dùng gốc). Ngoài *root user* ra, bạn có thể tạo ra nhiều IAM User khác để cho phép người khác truy cập **dài hạn** vào tài nguyên AWS trong tài khoản AWS của bạn.
+- **AWS Lambda**  
+  Dịch vụ chạy mã không cần quản lý máy chủ, dùng để tự động kích hoạt kiểm tra dữ liệu, xử lý kết quả và gửi cảnh báo.
 
+- **Amazon S3**  
+  Dịch vụ lưu trữ đối tượng, dùng để chứa dữ liệu nguồn, kết quả kiểm tra, file cấu hình quy tắc, và báo cáo.
 
-#### AWS Support
-**AWS Support** là một đơn vị cung cấp các dịch vụ hỗ trợ khách hàng của AWS.
+---
 
 
-#### Nội dung chính
+#### Main Content
 
-1. [Tạo tài khoản AWS](1-create-new-aws-account/)
-2. [Thiết lập MFA cho tài khoản AWS (Root)](2-mfa-setup-for-aws-user-(root)/)
-3. [Tài khoản và Nhóm Admin](3-create-admin-user-and-group/)
-4. [Hỗ trợ Xác thực Tài khoản](4-verify-new-account/)
+1. [Tạo S3 bucket để tải file chứa dữ liệu  ](1-create-new-aws-account/)
+2. [Cấp quyền cho IAM](2-MFA-Setup-For-AWS-User-(root))
+3. [Thiết lập AWS Glue](3-create-admin-user-and-group/)
+4. [Xóa tài nguyên](4-verify-new-account/)
+

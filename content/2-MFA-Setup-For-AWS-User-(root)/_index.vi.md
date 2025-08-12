@@ -1,42 +1,51 @@
 ---
-title : "MFA cho Tài khoản AWS"
-date :  "`r Sys.Date()`" 
+title : "Thiết lập IAM Role, AWS Glue"
+date: 2024-01-01T10:00:00+07:00
 weight : 2
 chapter : false
 pre : " <b> 2. </b> "
 ---
+# Giới thiệu IAM Root User
 
-#### Hướng dẫn Thiết lập Multi-Factor Authentication (MFA)
+**IAM Root User** là tài khoản **quản trị cao nhất** trong AWS, được tạo tự động khi đăng ký tài khoản AWS lần đầu.  
+Tài khoản này có **quyền truy cập không giới hạn** vào tất cả dịch vụ và tài nguyên trong AWS.
 
-Trong quy trình bảo mật, việc sử dụng Multi-Factor Authentication (MFA) rất quan trọng. Trong bước này, bạn sẽ sử dụng ba loại thiết bị MFA khác nhau để tăng cường tính bảo mật.
+## Đặc điểm chính:
+- **Toàn quyền** trên tất cả dịch vụ, bao gồm cả thay đổi cài đặt thanh toán và xóa tài khoản.
+- Không thể xóa hoặc giới hạn quyền của Root User.
+- Chỉ có **một Root User** duy nhất cho mỗi tài khoản AWS.
 
-#### Thiết bị MFA ảo trên smartphone
+## Khuyến nghị bảo mật:
+1. **Kích hoạt MFA (Multi-Factor Authentication)** cho Root User.
+2. **Không sử dụng Root User cho công việc hàng ngày** — thay vào đó, tạo IAM user/role với quyền cần thiết.
+3. **Lưu trữ thông tin đăng nhập Root User** ở nơi an toàn, chỉ sử dụng khi thực sự cần thiết (ví dụ: thay đổi billing, khôi phục tài khoản).
+4. **Ghi nhật ký (CloudTrail)** để theo dõi mọi hoạt động liên quan đến Root User.
 
-Một cách phổ biến để thực hiện MFA là sử dụng các ứng dụng MFA trên điện thoại thông minh. Có ba ứng dụng phổ biến mà bạn có thể sử dụng:
+📌 **Lưu ý:** Root User nếu bị lộ thông tin đăng nhập có thể dẫn tới **mất toàn bộ quyền kiểm soát tài khoản AWS**.
+## Giới thiệu AWS Glue
 
-1. Microsoft Authenticator
-2. Google Authenticator
-3. Okta Verify
+**AWS Glue** là dịch vụ **extract, transform, and load (ETL)** được quản lý hoàn toàn bởi Amazon Web Services.  
+Dịch vụ này giúp bạn chuẩn bị và tải dữ liệu phục vụ cho phân tích, học máy, hoặc phát triển ứng dụng mà không cần quản lý máy chủ hay hạ tầng thủ công.
 
-Để cài đặt MFA với các ứng dụng này, bạn cần thực hiện các bước sau:
+### Các tính năng chính
+- **Serverless**: Không cần quản lý hạ tầng, AWS Glue tự động cung cấp môi trường chạy.
+- **Data Catalog**: Kho metadata tập trung, lưu trữ định nghĩa bảng, schema và thông tin job.
+- **Công cụ ETL tích hợp**: Tự động sinh code Python hoặc Scala cho các job ETL.
+- **Lập lịch Job**: Lên lịch chạy job ETL hoặc kích hoạt dựa trên sự kiện.
+- **Tích hợp dịch vụ AWS**: Hoạt động mượt mà với Amazon S3, Redshift, RDS, Athena và nhiều dịch vụ khác.
 
-1. Tải và cài đặt ứng dụng từ cửa hàng ứng dụng chính thức của hãng phát triển.
-2. Theo hướng dẫn trong ứng dụng, thêm tài khoản bảo mật bằng cách quét mã QR hoặc nhập mã cung cấp.
+### Kiến trúc tổng quan AWS Glue
+1. **Data Catalog**  
+   - Lưu trữ metadata về các tập dữ liệu.  
+2. **Crawlers**  
+   - Tự động quét nguồn dữ liệu và cập nhật Data Catalog.  
+3. **ETL Jobs**  
+   - Thực hiện biến đổi và di chuyển dữ liệu, chạy trên nền Apache Spark.  
+4. **Triggers & Workflow**  
+   - Tự động hóa việc thực thi job và quản lý sự phụ thuộc.
 
-#### Khóa bảo mật U2F cứng
-
-Khóa bảo mật U2F (Universal 2nd Factor) cung cấp một lớp bảo mật bổ sung thông qua cổng USB. Để cài đặt khóa bảo mật U2F, bạn cần thực hiện các bước sau:
-
-1. Mua khóa bảo mật U2F tương thích với hệ thống của bạn.
-2. Kết nối khóa vào cổng USB của máy tính.
-3. Theo hướng dẫn của hãng sản xuất, thực hiện quá trình đăng ký và cài đặt.
-
-#### Thiết bị MFA phần cứng khác
-
-Ngoài các tùy chọn trên, còn có các thiết bị MFA phần cứng khác như khóa bảo mật Gemalto. Để sử dụng các thiết bị này, bạn cần tuân thủ hướng dẫn cụ thể từ nhà sản xuất.
-
-#### Liên kết nhanh đến các phần hướng dẫn chi tiết
-
-1. [Thiết lập với thiết bị MFA ảo](#1-virtual-mfa-device)
-2. [Thiết lập với Khóa Bảo mật U2F](#2-u2f-security-key)
-3. [Thiết lập với thiết bị MFA phần cứng khác](#3-other-hardware-mfa-device)
+### Các trường hợp sử dụng phổ biến
+- Chuẩn bị dữ liệu cho phân tích và học máy.
+- Tích hợp dữ liệu từ nhiều nguồn khác nhau.
+- Quản lý metadata cho nhiều dịch vụ dữ liệu AWS.
+- Tự động kiểm tra và biến đổi dữ liệu trong quy trình **Data Quality Management**.

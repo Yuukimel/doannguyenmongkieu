@@ -5,6 +5,15 @@ theme = "hugo-theme-learn"
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
+# Fix for Raw HTML warning in new Hugo versions
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# Ignore warnings for goldmark raw HTML
+ignoreLogs = ['warning-goldmark-raw-html']
+
 [params]
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "workshop"
